@@ -36,12 +36,12 @@ func main() {
 	}
 	defer store.Close()
 
-	createAdmin := true
+	createAdmin := false
 	// default user1 name
-	adminName := "adrianbega"
+	adminName := "admin1"
 
 	// try to find user1
-	user, err := store.User().User(portainer.UserID(1))
+	user, err := store.User().User(portainer.UserID(4)) //ABE: 1
 	if err != nil {
 		// if user1 doesn't exist, will create later
 		log.Printf("[WARN] Unable to retrieve user with ID 1, will try to create, err: %s", err)
