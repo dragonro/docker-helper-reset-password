@@ -36,9 +36,9 @@ func main() {
 	}
 	defer store.Close()
 
-	createAdmin := false
+	createAdmin := true
 	// default user1 name
-	adminName := "admin"
+	adminName := "adrianbega"
 
 	// try to find user1
 	user, err := store.User().User(portainer.UserID(1))
