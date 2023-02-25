@@ -39,12 +39,13 @@ func main() {
 	createAdmin := false
 	// default user1 name
 	adminName := "admin1"
+	adminId := 4
 
 	// try to find user1
-	user, err := store.User().User(portainer.UserID(4)) //ABE: 1
+	user, err := store.User().User(portainer.UserID(adminId)) //ABE: 1
 	if err != nil {
 		// if user1 doesn't exist, will create later
-		log.Printf("[WARN] Unable to retrieve user with ID 1, will try to create, err: %s", err)
+		log.Printf("[WARN] Unable to retrieve user with ID %s, will try to create, err: %s", adminId, err)
 
 		createAdmin = true
 
@@ -76,9 +77,9 @@ func main() {
 		// create user1 when needed
 		if err := store.GetConnection().CreateObjectWithId(
 			store.User().BucketName(),
-			1,
+			adminId,
 			&portainer.User{
-				ID:       1,
+				ID:       adminId,
 				Username: adminName,
 				Role:     portainer.AdministratorRole,
 				Password: hash,
